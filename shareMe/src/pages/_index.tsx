@@ -1,0 +1,5 @@
+export { default as DashboardPage } from './DashboardPage'
+export { default as LoginPage } from './LoginPage'
+export { default as ProfilePage } from './ProfilePage'
+export { default as NotificationsPage } from './NotificationsPage'
+export { default as NotFoundPage } from './NotFoundPage'
