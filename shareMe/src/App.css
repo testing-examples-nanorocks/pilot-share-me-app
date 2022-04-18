@@ -7,6 +7,7 @@
   width: 50px;
   padding: 25px;
   transition: all 0.5s;
+  z-index: 1;
 }
 .search-click:focus {
   width: 300px;
