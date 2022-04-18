@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar } from '../components/_index'
 import { NotificationsContentLoader, Notifications } from "../components/_index";
+
 type Props = {}
 
 export default function NotificationsPage({ }: Props) {

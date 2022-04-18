@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 
 type Props = {
     // children: React.ReactNode
@@ -7,6 +8,25 @@ type Props = {
 
 export default function Navbar(props: Props) {
   const location = useLocation();
+
+  const user = {
+    name: 'Tom Cook',
+    email: 'tom@example.com',
+    imageUrl:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  }
+
+  const [dropdown, setDropDown] = useState(false);
+
+  const [hamburgerMenu, setHamburgerMenu] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropDown(!dropdown)
+  }
+  
+  const toggleHamburgerMenu = () => {
+    setHamburgerMenu(!hamburgerMenu)
+  }
 
   return (
     <>
@@ -87,12 +107,13 @@ export default function Navbar(props: Props) {
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt=""
+                        onClick={toggleDropdown}
                       />
                     </button>
                   </div>
 
                   <div
-                    className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className={`${!dropdown ? 'hidden' : ''} origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none`}
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
@@ -128,6 +149,7 @@ export default function Navbar(props: Props) {
                 className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
+                onClick={toggleHamburgerMenu}
               >
                 <span className="sr-only">Open main menu</span>
 
@@ -167,7 +189,7 @@ export default function Navbar(props: Props) {
           </div>
         </div>
 
-        <div className="md:hidden" id="mobile-menu">
+        <div className={`md:hidden ${!hamburgerMenu ? 'hidden' : ''}`} id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <Link
               to={'/dashboard'}
@@ -201,6 +223,7 @@ export default function Navbar(props: Props) {
                   className="h-10 w-10 rounded-full"
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                   alt=""
+                  onClick={toggleDropdown}
                 />
               </div>
               <div className="ml-3">
@@ -215,6 +238,7 @@ export default function Navbar(props: Props) {
                 type="button"
                 className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
               >
+              <Link to="/notifications">
                 <span className="sr-only">View notifications</span>
 
                 <svg
@@ -232,7 +256,8 @@ export default function Navbar(props: Props) {
                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
                   />
                 </svg>
-              </button>
+                </Link>
+                </button>
             </div>
             <div className="mt-3 px-2 space-y-1">
               <a
