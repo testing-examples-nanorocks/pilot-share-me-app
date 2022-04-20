@@ -59,10 +59,10 @@ export default function Navbar(props: Props) {
                   </Link>
 
                   <Link
-                    to={'/notifications'}
-                    className={`${location.pathname === '/notifications' ? 'bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'}`}
+                    to={'/history'}
+                    className={`${location.pathname === '/history' ? 'bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium'}`}
                   >
-                    Notifications
+                    History
                   </Link>
                 </div>
               </div>
@@ -208,11 +208,11 @@ export default function Navbar(props: Props) {
             </Link>
 
             <Link
-              to={'/notifications'}
-              className={`${location.pathname === '/notifications' ? 'bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'}`}
+              to={'/history'}
+              className={`${location.pathname === '/history' ? 'bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'}`}
               aria-current="page"
             >
-              Notifications
+              History
             </Link>
 
           </div>

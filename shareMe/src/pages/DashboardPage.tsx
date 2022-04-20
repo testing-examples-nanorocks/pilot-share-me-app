@@ -1,4 +1,4 @@
-import { Navbar, Articles } from '../components/_index'
+import { Navbar, Articles, DashboardContentLoader, Modal } from '../components/_index'
 
 type Props = {}
 
@@ -8,12 +8,14 @@ export default function Dashboard({ }: Props) {
       <div className="min-h-full">
         <Navbar />
         <header className="bg-white shadow">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
+          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between flex-row">
             <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-            <input type="text" className="search-click rounded-md border-stone-200" name="" placeholder="Search any article by word" />
+            <input type="text" className="search-click rounded-md border-stone-200" name="" placeholder="Search any article by word ..." />
+            <Modal />
           </div>
         </header>
         <main>
+       
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <form className='pt-10'>
               <div className="flex justify-center">
@@ -41,6 +43,7 @@ export default function Dashboard({ }: Props) {
                   </select>
                 </div>
               </div>
+              <DashboardContentLoader />
             </form>
 
             <section className="pt-10 pb-10 lg:pb-20 bg-[#F3F4F6]">

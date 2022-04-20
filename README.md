@@ -8,3 +8,6 @@ FE
 - TypeScript
 - Redux
 - TailwindCss
+- react-feather
+- ts-jest
+- react-hook-form

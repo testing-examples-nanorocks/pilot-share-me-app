@@ -4,14 +4,14 @@
   background-size: 22px;
   background-position: 13px;
   border-radius: 10px;
-  width: 50px;
+  width: 15rem;
   padding: 25px;
   transition: all 0.5s;
   z-index: 1;
 }
 .search-click:focus {
-  width: 300px;
-  padding-left: 50px;
+  /* width: 300px; */
+  /* padding-left: 50px; */
 }
 .search-click {
   position: relative;
@@ -22,7 +22,7 @@
   border: 1px solid #ccc;
   outline: none;
   position: absolute;
-  width: 300px;
+  /* width: 300px; */
   left: 0%;
   padding: 10px;
 }

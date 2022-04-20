@@ -7,7 +7,7 @@ import ContentLoader from "react-content-loader"
 
 export default function NotificationsContentLoader(props: Props) {
   return (
-    <div>
+    <div className='overflow-hidden'>
           <ContentLoader
               speed={2}
               width={700}
