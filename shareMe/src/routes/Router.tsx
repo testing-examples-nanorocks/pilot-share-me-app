@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import React from 'react'
-import { LoginPage, DashboardPage, NotFoundPage, ProfilePage, NotificationsPage, HistoryPage } from './../pages/_index'
+import { routeMapper } from ".";
+import AuthMiddleware from "../middleware/AuthMiddleware";
+import { IRoute } from './../interfaces/_index'
 
 type Props = {
     children: React.ReactNode
@@ -10,12 +12,15 @@ export default function Router(props: Props) {
     return (
         <>
             <Routes>
-                <Route path="/" element={<LoginPage /> } />
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/notifications" element={<NotificationsPage />} />
-                <Route path="/history" element={<HistoryPage />} />
-                <Route path="*" element={<NotFoundPage />} />
+                {routeMapper.map((item: IRoute, index: number) => {
+                    return (
+                        <Route path={item.routeName} key={index} element={
+                            <AuthMiddleware item={item}>
+                                {item.element}
+                            </AuthMiddleware>
+                        }/>
+                    )
+                })}
             </Routes>
         </>
     )

@@ -10,17 +10,16 @@ export default function Dashboard({ }: Props) {
         <header className="bg-white shadow">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between flex-row">
             <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-            <input type="text" className="search-click rounded-md border-stone-200" name="" placeholder="Search any article by word ..." />
+            <input type="text" className="search-click rounded-md border-stone-200 focus:border-purple-600" name="" placeholder="Search any article by word ..." />
             <Modal />
           </div>
         </header>
         <main>
-       
+
           <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <form className='pt-10'>
-              <div className="flex justify-center">
-                <div className="mb-3 xl:w-96">
-                  <select className="form-select form-select-lg mb-3
+              <div className="mb-3">
+                <select className="form-select form-select-lg mb-3
                         appearance-none
                         block
                         w-full
@@ -35,13 +34,13 @@ export default function Dashboard({ }: Props) {
                         transition
                         ease-in-out
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-violet-600 focus:outline-none" aria-label=".form-select-lg example">
-                    <option selected>Filter by category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
+                        focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none" aria-label=".form-select-lg example"
+                  defaultValue={1}
+                >
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
               </div>
               <DashboardContentLoader />
             </form>

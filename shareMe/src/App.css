@@ -26,3 +26,7 @@
   left: 0%;
   padding: 10px;
 }
+
+.react-select-3-input {
+  border: none !important;
+}
