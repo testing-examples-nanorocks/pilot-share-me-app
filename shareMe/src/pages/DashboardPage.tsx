@@ -1,8 +1,12 @@
 import { Navbar, Articles, DashboardContentLoader, Modal } from '../components/_index'
+import { IArticle } from '../interfaces/_index'
+import articles from '../mock/ArticlesMock'
 
 type Props = {}
 
 export default function Dashboard({ }: Props) {
+  const articlesDS: IArticle[] = articles.filter(item => !item.isDeleted)
+
   return (
     <>
       <div className="min-h-full">
@@ -49,9 +53,9 @@ export default function Dashboard({ }: Props) {
               <div className="container">
                 <div className="flex flex-wrap -mx-4">
                   {
-                    [1, 2, 3, 4].map((item, index) => {
+                    articlesDS.map((item: IArticle) => {
                       return (
-                        <Articles item={item} key={index} />
+                        <Articles item={item} key={item.id} />
                       )
                     })
                   }

@@ -11,13 +11,13 @@ const notifications: INotificationItem[] = [
         id: 2,
         type: 'Remove article',
         description: 'Article moved to history table',
-        date: '3.07.2022'
+        date: '03.07.2022'
     },
     {
         id: 3,
         type: 'Error',
         description: 'There was an error while creating new category',
-        date: '1.01.2022'
+        date: '01.01.2022'
     },
 ]
 

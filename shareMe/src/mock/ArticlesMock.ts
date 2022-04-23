@@ -9,7 +9,19 @@ const articles: IArticle[] = [
         category: {
             id: 1,
             name: 'music'
-        }
+        },
+        isDeleted: false
+    },
+    {
+        id: 2,
+        title: 'React Select',
+        description: 'A flexible and beautiful Select Input control for ReactJS with multiselect, autocomplete, async and creatable support.',
+        url: 'https://react-select.com/home#creatable',
+        category: {
+            id: 1,
+            name: 'programming'
+        },
+        isDeleted: true
     }
 ]
 

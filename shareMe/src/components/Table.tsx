@@ -1,9 +1,13 @@
 import React from 'react'
-import { RefreshCcw } from 'react-feather'
+import { IArticle } from '../interfaces/_index'
+import articles from '../mock/ArticlesMock'
+import { TableRow } from './_index'
 
 type Props = {}
 
 export default function Table({ }: Props) {
+    const articlesDS: IArticle[] = articles.filter(item => item.isDeleted)
+
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -27,42 +31,9 @@ export default function Table({ }: Props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="border-b">
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Mark
-                                    </td>
-                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Otto
-                                    </td>
-                                    <td className="cursor-pointer hover:text-indigo-400 text-sm text-indigo-700 font-light px-6 py-4 whitespace-nowrap">
-                                        <RefreshCcw className='inline mr-1' size={16} /> Rollback
-                                    </td>
-                                </tr>
-                                <tr className="bg-white border-b">
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Jacob
-                                    </td>
-                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Thornton
-                                    </td>
-                                    <td className="cursor-pointer hover:text-indigo-400 text-sm text-indigo-700 font-light px-6 py-4 whitespace-nowrap">
-                                        <RefreshCcw className='inline mr-1' size={16} /> Rollback
-                                    </td>
-                                </tr>
-                                <tr className="bg-white border-b">
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Larry
-                                    </td>
-                                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        Wild
-                                    </td>
-                                    <td className="cursor-pointer hover:text-indigo-400 text-sm text-indigo-700 font-light px-6 py-4 whitespace-nowrap">
-                                        <RefreshCcw className='inline mr-1' size={16} /> Rollback
-                                    </td>
-                                </tr>
+                                {articlesDS.map((item: IArticle) => {
+                                    return <TableRow item={item} key={item.id}/>
+                                })}
                             </tbody>
                         </table>
                     </div>

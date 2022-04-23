@@ -5,5 +5,6 @@ export interface IArticle {
     title: string,
     description: string,
     url: string
-    category: ICategory
+    category: ICategory,
+    isDeleted: boolean
 }
