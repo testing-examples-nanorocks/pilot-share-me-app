@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navbar, ProfileContentLoader, ProfileForm } from '../components/_index'
 import { IProfile } from '../interfaces/IProfile'
 import profile from '../mock/ProfileMock'

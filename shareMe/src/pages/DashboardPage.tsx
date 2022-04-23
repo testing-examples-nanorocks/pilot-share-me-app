@@ -47,7 +47,3 @@ export default function Dashboard({ }: Props) {
     </>
   )
 }
-
-function item(item: any): import("react").ReactNode {
-  throw new Error('Function not implemented.')
-}
