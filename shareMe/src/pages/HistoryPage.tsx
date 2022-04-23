@@ -1,9 +1,13 @@
 import React from 'react'
 import { Navbar, Table } from '../components/_index'
+import articles from '../mock/ArticlesMock'
+import { IArticle } from '../interfaces/_index'
 
 type Props = {}
 
 export default function HistoryPage({ }: Props) {
+  const articlesDS: IArticle[] = articles.filter(item => item.isDeleted)
+  
   return (
     <>
       <div className="min-h-full">
@@ -17,7 +21,7 @@ export default function HistoryPage({ }: Props) {
           
           <div className="max-w-1xl mx-auto pt-10 mx-10">
             <div className="p-4 bg-white rounded-lg border shadow-md sm:p-8 ">
-              <Table />
+              <Table articles={articlesDS} />
             </div>
           </div>
         </main>

@@ -1,13 +1,12 @@
 import React from 'react'
-import { IArticle } from '../interfaces/_index'
-import articles from '../mock/ArticlesMock'
+import { IArticle } from '../interfaces/IArticle'
 import { TableRow } from './_index'
 
-type Props = {}
+type Props = {
+    articles: IArticle[]
+}
 
-export default function Table({ }: Props) {
-    const articlesDS: IArticle[] = articles.filter(item => item.isDeleted)
-
+export default function Table({ articles }: Props) {
     return (
         <div className="flex flex-col">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -31,7 +30,7 @@ export default function Table({ }: Props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {articlesDS.map((item: IArticle) => {
+                                {articles.map((item: IArticle) => {
                                     return <TableRow item={item} key={item.id}/>
                                 })}
                             </tbody>

@@ -6,19 +6,19 @@ const categories: ICategory[] = [
         name: 'Programming'
     },
     {
-        id: 1,
+        id: 2,
         name: 'Redesign'
     },
     {
-        id: 1,
+        id: 3,
         name: 'Patterns'
     },
     {
-        id: 1,
+        id: 4,
         name: 'Algorithms'
     },
     {
-        id: 1,
+        id: 5,
         name: 'Other'
     }
 ]

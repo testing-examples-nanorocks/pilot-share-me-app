@@ -1,12 +1,12 @@
 import React from 'react'
 import { INotificationItem } from '../interfaces/INotificationItem'
-import notifications from '../mock/NotificationsMock'
 import { NotificationItem } from './_index'
 
-type Props = {}
+type Props = {
+    notifications: INotificationItem[]
+}
 
-export default function Notifications({ }: Props) {
-    const notificationsDS: INotificationItem[] = notifications
+export default function Notifications({ notifications }: Props) {
 
     return (
         <>
@@ -18,7 +18,7 @@ export default function Notifications({ }: Props) {
             </div>
             <div className="flow-root">
                 <ul role="list" className="divide-y divide-gray-200">
-                    {notificationsDS.map((item: INotificationItem) => {
+                    {notifications.map((item: INotificationItem) => {
                         return (
                             <NotificationItem key={item.id} item={item} />
                         )
