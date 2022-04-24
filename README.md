@@ -11,3 +11,4 @@ FE
 - react-feather
 - ts-jest
 - react-hook-form
+- react-chartjs-2

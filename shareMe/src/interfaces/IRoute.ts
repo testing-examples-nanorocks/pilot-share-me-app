@@ -1,5 +1,5 @@
 export interface IRoute {
     routeName: string,
-    element: React.ReactElement,
+    page: React.ReactElement,
     isAuth: boolean
 }

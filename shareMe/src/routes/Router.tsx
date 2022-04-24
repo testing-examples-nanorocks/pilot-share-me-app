@@ -16,7 +16,7 @@ export default function Router(props: Props) {
                     return (
                         <Route path={item.routeName} key={index} element={
                             <AuthMiddleware item={item}>
-                                {item.element}
+                                {item.page}
                             </AuthMiddleware>
                         }/>
                     )

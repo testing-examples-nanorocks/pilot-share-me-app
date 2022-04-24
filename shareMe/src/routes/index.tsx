@@ -1,36 +1,41 @@
 export { default as Router } from './Router'
 import { IRoute } from '../interfaces/_index'
-import { LoginPage, DashboardPage, NotFoundPage, ProfilePage, NotificationsPage, HistoryPage } from '../views/pages/_index'
+import { LoginPage, DashboardPage, NotFoundPage, ProfilePage, NotificationsPage, HistoryPage, AnalyticsPage } from '../views/pages/_index'
 
 export const routeMapper: IRoute [] = [
     {
         routeName: '/',
-        element: <LoginPage />,
+        page: <LoginPage />,
         isAuth: false
     },
     {
         routeName: '/dashboard',
-        element: <DashboardPage />,
+        page: <DashboardPage />,
         isAuth: true
     },
     {
         routeName: '/profile',
-        element: <ProfilePage />,
+        page: <ProfilePage />,
         isAuth: true
     },
     {
         routeName: '/notifications',
-        element: <NotificationsPage />,
+        page: <NotificationsPage />,
         isAuth: true
     },
     {
         routeName: '/history',
-        element: <HistoryPage />,
+        page: <HistoryPage />,
+        isAuth: true
+    },
+    {
+        routeName: '/analytics',
+        page: <AnalyticsPage />,
         isAuth: true
     },
     {
         routeName: '*',
-        element: <NotFoundPage />,
+        page: <NotFoundPage />,
         isAuth: true
     },
 ]
