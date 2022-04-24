@@ -1,5 +1,5 @@
 import React from 'react'
-import { ICategory } from '../interfaces/ICategory'
+import { ICategory } from '../../interfaces/ICategory'
 
 type Props = {
     categories: ICategory[]

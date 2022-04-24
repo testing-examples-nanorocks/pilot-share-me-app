@@ -1,5 +1,5 @@
 import { MousePointer, Trash2 } from 'react-feather'
-import { IArticle } from '../interfaces/_index'
+import { IArticle } from '../../interfaces/_index'
 
 type Props = {
     item: IArticle

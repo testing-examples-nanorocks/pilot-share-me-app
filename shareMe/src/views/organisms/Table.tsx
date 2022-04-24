@@ -1,5 +1,5 @@
 import React from 'react'
-import { IArticle } from '../interfaces/IArticle'
+import { IArticle } from '../../interfaces/IArticle'
 import { TableRow } from './_index'
 
 type Props = {

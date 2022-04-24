@@ -1,0 +1,6 @@
+export { default as DashboardTemplate } from './DashboardTemplate'
+export { default as HistoryTemplate } from './HistoryTemplate'
+export { default as LoginTemplate } from './LoginTemplate'
+export { default as NotFoundTemplate } from './NotFoundTemplate'
+export { default as NotificationsTemplate } from './NotificationsTemplate'
+export { default as ProfileTemplate } from './ProfileTemplate'

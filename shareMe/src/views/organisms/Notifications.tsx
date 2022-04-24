@@ -1,5 +1,5 @@
 import React from 'react'
-import { INotificationItem } from '../interfaces/INotificationItem'
+import { INotificationItem } from '../../interfaces/INotificationItem'
 import { NotificationItem } from './_index'
 
 type Props = {
