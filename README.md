@@ -12,3 +12,4 @@ FE
 - ts-jest
 - react-hook-form
 - react-chartjs-2
+- Firebase

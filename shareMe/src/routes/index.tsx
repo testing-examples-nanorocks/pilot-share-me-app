@@ -4,14 +4,14 @@ import { LoginPage, DashboardPage, NotFoundPage, ProfilePage, NotificationsPage,
 
 export const routeMapper: IRoute [] = [
     {
-        routeName: '/',
-        page: <LoginPage />,
-        isAuth: false
-    },
-    {
         routeName: '/dashboard',
         page: <DashboardPage />,
         isAuth: true
+    },
+    {
+        routeName: '/',
+        page: <LoginPage />,
+        isAuth: false
     },
     {
         routeName: '/profile',
