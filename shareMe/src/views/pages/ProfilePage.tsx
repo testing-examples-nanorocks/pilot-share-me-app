@@ -1,7 +1,7 @@
 
-import { IProfile } from '../../interfaces/IProfile'
-import profile from '../../mock/ProfileMock'
-import ProfileTemplate from '../templates/ProfileTemplate'
+import { IProfile } from '@interfaces/_index'
+import profile from '@mock/ProfileMock'
+import { ProfileTemplate } from '@views/templates/_index'
 
 type Props = {}
 

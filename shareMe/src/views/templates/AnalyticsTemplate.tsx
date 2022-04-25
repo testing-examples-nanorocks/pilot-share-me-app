@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar } from '../organisms/_index'
+import { Navbar } from '@views/organisms/_index'
 import { Doughnut } from 'react-chartjs-2';
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';

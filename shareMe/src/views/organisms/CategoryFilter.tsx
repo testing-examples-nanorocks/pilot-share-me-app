@@ -1,5 +1,5 @@
 import React from 'react'
-import { ICategory } from '../../interfaces/ICategory'
+import { ICategory } from '@interfaces/_index'
 
 type Props = {
     categories: ICategory[]
@@ -28,7 +28,7 @@ export default function CategoryFilter({ categories }: Props) {
                     defaultValue={1}
                 >
                     {categories.map((item: ICategory) => {
-                        return <option value={item.id}>{item.name}</option>
+                        return <option value={item.id} key={item.id}>{item.name}</option>
                     })}
                 </select>
             </div>

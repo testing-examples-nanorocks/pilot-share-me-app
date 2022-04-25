@@ -1,8 +1,7 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { IRoute } from '../interfaces/_index';
-import { getCurrentApiCall } from '../services/_index';
-import { existStorage } from '../utils/localStorage';
+import { IRoute } from '@interfaces/_index';
+import { getCurrentApiCall } from '@services/_index';
+import { existStorage } from '@utils/localStorage';
 
 type Props = {
   children: JSX.Element
@@ -18,7 +17,7 @@ export default function AuthMiddleware({ children, item }: Props) {
        navigate('/dashboard')
     }, 1000)
 
-    return "Loading..."
+    return <div>Loading...</div>
   }
 
   // check authentication from firebase

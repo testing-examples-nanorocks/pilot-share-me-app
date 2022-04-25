@@ -1,6 +1,6 @@
 import React from 'react'
-import { IArticle } from '../../interfaces/_index'
-import { Navbar, Table } from '../organisms/_index'
+import { IArticle } from '@interfaces/_index'
+import { Navbar, Table } from '@views/organisms/_index'
 
 type Props = {
     articles: IArticle[]

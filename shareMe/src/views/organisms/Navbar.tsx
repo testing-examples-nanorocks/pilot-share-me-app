@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LogoutApiCall } from './../../services/_index'
+import { LogoutApiCall } from '@services/_index'
 
 type Props = {
   // children: React.ReactNode

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Bell } from 'react-feather'
-import { INotificationItem } from '../../interfaces/INotificationItem'
+import { INotificationItem } from '@interfaces/_index'
 
 type Props = {
     item: INotificationItem

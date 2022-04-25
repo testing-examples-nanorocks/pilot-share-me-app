@@ -1,5 +1,5 @@
 import React from 'react'
-import { AnalyticsTemplate } from '../templates/_index'
+import { AnalyticsTemplate } from '@views/templates/_index'
 
 type Props = {}
 

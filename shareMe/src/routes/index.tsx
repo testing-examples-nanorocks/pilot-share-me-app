@@ -1,6 +1,6 @@
-export { default as Router } from './Router'
-import { IRoute } from '../interfaces/_index'
-import { LoginPage, DashboardPage, NotFoundPage, ProfilePage, NotificationsPage, HistoryPage, AnalyticsPage } from '../views/pages/_index'
+export { default as Router } from '@routes/Router'
+import { IRoute } from '@interfaces/_index'
+import { LoginPage, DashboardPage, ProfilePage, NotificationsPage, HistoryPage, AnalyticsPage, NotFoundPage } from '@views/pages/_index'
 
 export const routeMapper: IRoute [] = [
     {

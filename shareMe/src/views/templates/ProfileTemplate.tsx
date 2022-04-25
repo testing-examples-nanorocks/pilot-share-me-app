@@ -1,6 +1,6 @@
 import React from 'react'
-import { IProfile } from '../../interfaces/_index'
-import { Navbar, ProfileContentLoader, ProfileForm } from '../organisms/_index'
+import { IProfile } from '@interfaces/_index'
+import { Navbar, ProfileContentLoader, ProfileForm } from '@views/organisms/_index'
 
 type Props = {
     profile: IProfile

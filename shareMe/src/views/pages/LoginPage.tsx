@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoginTemplate } from '../templates/_index'
+import { LoginTemplate } from '@views/templates/_index'
 
 type Props = {}
 

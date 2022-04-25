@@ -1,4 +1,4 @@
-import { IProfile } from "../interfaces/_index";
+import { IProfile } from "@interfaces/_index";
 
 const profile: IProfile = {
     id: 1,

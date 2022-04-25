@@ -1,4 +1,4 @@
-import { ICategory } from "../interfaces/_index";
+import { ICategory } from "@interfaces/_index";
 
 const categories: ICategory[] = [
     {

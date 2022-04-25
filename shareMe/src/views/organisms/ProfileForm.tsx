@@ -1,5 +1,5 @@
 import React from 'react'
-import { IProfile } from '../../interfaces/_index'
+import { IProfile } from '@interfaces/_index'
 
 type Props = {
     profile: IProfile

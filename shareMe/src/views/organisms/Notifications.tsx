@@ -1,6 +1,6 @@
 import React from 'react'
-import { INotificationItem } from '../../interfaces/INotificationItem'
-import { NotificationItem } from './_index'
+import { INotificationItem } from '@interfaces/_index'
+import { NotificationItem } from '@views/organisms/_index'
 
 type Props = {
     notifications: INotificationItem[]

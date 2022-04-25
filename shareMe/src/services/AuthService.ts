@@ -1,8 +1,8 @@
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { NavigateFunction } from "react-router-dom";
-import { IRoute } from "../interfaces/IRoute";
-import { app } from './../auth/firebase'
-import { setStorage, clearStorage } from './../utils/localStorage'
+import { IRoute } from "@interfaces/_index";
+import { app } from '@auth/firebase'
+import { setStorage, clearStorage } from '@utils/localStorage'
 
 export const LoginApiCall = (credentials: { email: string, password: string }, navigate: NavigateFunction) => {
     const { email, password } = credentials;
@@ -39,12 +39,12 @@ export const LogoutApiCall = (navigate: NavigateFunction) => {
 export const getCurrentApiCall = (navigate: NavigateFunction, item: IRoute) => {
     const auth = getAuth(app);
     onAuthStateChanged(auth, (user) => {
-        if (user) {          
+        if (user) {
             setStorage('user', user)
             // if user exist add to redux storage
-            return
+            return null
         }
-        
+
         // User is signed out
         clearStorage()
 

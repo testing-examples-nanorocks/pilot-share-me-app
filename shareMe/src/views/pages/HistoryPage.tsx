@@ -1,8 +1,8 @@
 import React from 'react'
 
-import articles from '../../mock/ArticlesMock'
-import { IArticle } from '../../interfaces/_index'
-import { HistoryTemplate } from '../templates/_index'
+import articles from '@mock/ArticlesMock'
+import { IArticle } from '@interfaces/_index'
+import { HistoryTemplate } from '@views/templates/_index'
 
 type Props = {}
 

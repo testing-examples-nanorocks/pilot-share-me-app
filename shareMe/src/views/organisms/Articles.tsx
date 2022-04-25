@@ -1,5 +1,5 @@
 import { MousePointer, Trash2 } from 'react-feather'
-import { IArticle } from '../../interfaces/_index'
+import { IArticle } from '@interfaces/_index'
 
 type Props = {
     item: IArticle
@@ -16,7 +16,7 @@ export default function Articles({ item }: Props) {
                         </div>
                         <h3>
                             <a
-                                href="javascript:void(0)"
+                                href="#"
                                 className="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary"
                             >
                                 {item.title}

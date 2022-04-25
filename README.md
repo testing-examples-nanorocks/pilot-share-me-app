@@ -13,3 +13,4 @@ FE
 - react-hook-form
 - react-chartjs-2
 - Firebase
+- vite-aliases

@@ -1,4 +1,4 @@
-import { INotificationItem } from "../interfaces/_index";
+import { INotificationItem } from "@interfaces/_index";
 
 const notifications: INotificationItem[] = [
     {

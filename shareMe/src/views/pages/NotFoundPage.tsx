@@ -1,5 +1,5 @@
 import React from 'react'
-import { NotFoundTemplate } from '../templates/_index'
+import { NotFoundTemplate } from '@views/templates/_index'
 
 type Props = {}
 

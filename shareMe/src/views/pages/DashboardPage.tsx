@@ -1,8 +1,8 @@
 
-import { IArticle, ICategory } from '../../interfaces/_index'
-import articles from '../../mock/ArticlesMock'
-import categories from '../../mock/CategoriesMock'
-import { DashboardTemplate } from '../templates/_index'
+import { IArticle, ICategory } from '@interfaces/_index'
+import articles from '@mock/ArticlesMock'
+import categories from '@mock/CategoriesMock'
+import { DashboardTemplate } from '@views/templates/_index'
 
 type Props = {}
 

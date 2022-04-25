@@ -1,6 +1,6 @@
-import { INotificationItem } from '../../interfaces/INotificationItem'
-import notifications from '../../mock/NotificationsMock'
-import { NotificationsTemplate } from '../templates/_index'
+import { INotificationItem } from '@interfaces/_index'
+import notifications from '@mock/NotificationsMock'
+import { NotificationsTemplate } from '@views/templates/_index'
 
 type Props = {}
 

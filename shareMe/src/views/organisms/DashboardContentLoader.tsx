@@ -1,8 +1,6 @@
-import React from 'react'
+import ContentLoader from "react-content-loader"
 
 type Props = {}
-
-import ContentLoader from "react-content-loader"
 
 export default function DashboardContentLoader(props: Props) {
   return (
