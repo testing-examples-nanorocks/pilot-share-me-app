@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LoginFactory } from '@factory/_index'
+import { SubmitHandler, useForm } from "react-hook-form";
+import { ILogin } from '@interfaces/_index';
 
 type Props = {}
 
 export default function LoginTemplate({ }: Props) {
+    const { register, formState: { errors }, handleSubmit } = useForm<ILogin>();
+
 
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
 
     const navigate = useNavigate();
 
-    const loginUser = (e: any) => {
-        e.preventDefault()
-        // TODO validate form
+    const loginUser: SubmitHandler<ILogin> = (data) => {
         LoginFactory({ email, password }, navigate)
     }
 
@@ -23,22 +25,27 @@ export default function LoginTemplate({ }: Props) {
                 <div className="max-w-md w-full space-y-8">
                     <div>
                         <img className="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow" />
-                        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
+                        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Share Me <br />Sign in to your account</h2>
                         <p className="mt-2 text-center text-sm text-gray-600">
                             Or
                             <a href="https://nankov.mk" className="font-medium text-indigo-600 hover:text-indigo-500"> visit nankov.mk </a>
                         </p>
                     </div>
-                    <form className="mt-8 space-y-6" onSubmit={loginUser}>
+                    <form className="mt-8 space-y-6" onSubmit={handleSubmit(loginUser)} noValidate={true}>
                         <input type="hidden" name="remember" value="true" />
                         <div className="rounded-md shadow-sm -space-y-px">
                             <div>
                                 <label htmlFor="email-address" className="sr-only">Email address</label>
-                                <input onChange={(e) => setEmail(e.target.value)} id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+                                <input {...register("email", { required: true })} onChange={(e) => setEmail(e.target.value)} id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+                                
+                                <span className="text-red-500 text-sm">{errors.email?.type === 'required' && "Email is required"}</span>
                             </div>
                             <div>
                                 <label htmlFor="password" className="sr-only">Password</label>
-                                <input onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+                                <input {...register("password", { required: true, maxLength: 20, minLength: 8 })} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+                                <span className="text-red-500 text-sm">{errors.password?.type === 'required' && "Password is required"}</span>
+                                <span className="text-red-500 text-sm">{errors.password?.type === 'minLength' && "Password too short"}</span>
+                                <span className="text-red-500 text-sm">{errors.password?.type === 'maxLength' && "Password out of limit"}</span>
                             </div>
                         </div>
 
