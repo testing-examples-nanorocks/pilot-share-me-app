@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { LoginApiCall } from '@services/_index'
+import { LoginFactory } from '@factory/_index'
 
 type Props = {}
 
@@ -8,13 +8,13 @@ export default function LoginTemplate({ }: Props) {
 
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    
+
     const navigate = useNavigate();
 
-    const loginUser = (e:any) => {
+    const loginUser = (e: any) => {
         e.preventDefault()
         // TODO validate form
-        LoginApiCall({ email, password }, navigate)
+        LoginFactory({ email, password }, navigate)
     }
 
     return (

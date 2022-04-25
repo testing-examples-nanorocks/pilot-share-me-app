@@ -4,7 +4,7 @@ import { IRoute } from "@interfaces/_index";
 import { app } from '@auth/firebase'
 import { setStorage, clearStorage } from '@utils/localStorage'
 
-export const LoginApiCall = (credentials: { email: string, password: string }, navigate: NavigateFunction) => {
+export const FirebaseLoginApiCall = (credentials: { email: string, password: string }, navigate: NavigateFunction) => {
     const { email, password } = credentials;
     const auth = getAuth(app);
 
@@ -22,7 +22,7 @@ export const LoginApiCall = (credentials: { email: string, password: string }, n
         });
 }
 
-export const LogoutApiCall = (navigate: NavigateFunction) => {
+export const FirebaseLogoutApiCall = (navigate: NavigateFunction) => {
     const auth = getAuth(app);
     signOut(auth).then(() => {
         clearStorage()
@@ -36,7 +36,7 @@ export const LogoutApiCall = (navigate: NavigateFunction) => {
     });
 }
 
-export const getCurrentApiCall = (navigate: NavigateFunction, item: IRoute) => {
+export const FirebaseGetCurrentApiCall = (navigate: NavigateFunction, item: IRoute) => {
     const auth = getAuth(app);
     onAuthStateChanged(auth, (user) => {
         if (user) {

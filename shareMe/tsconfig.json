@@ -16,6 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
+      "@middleware/*": ["./src/middleware/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@views/*": ["./src/views/*"],
       "@services/*": ["./src/services/*"],
@@ -24,6 +25,8 @@
       "@redux/*": ["./src/redux/*"],
       "@routes/*": ["./src/routes/*"],
       "@auth/*": ["./src/auth/*"],
+      "@enums/*": ["./src/enums/*"],
+      "@factory/*": ["./src/factory/*"],
     }
   },
   "include": ["src"],

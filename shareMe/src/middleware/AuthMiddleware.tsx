@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { IRoute } from '@interfaces/_index';
-import { getCurrentApiCall } from '@services/_index';
+import { GetCurrentFactory } from '@factory/_index';
 import { existStorage } from '@utils/localStorage';
 
 type Props = {
@@ -21,7 +21,7 @@ export default function AuthMiddleware({ children, item }: Props) {
   }
 
   // check authentication from firebase
-  getCurrentApiCall(navigate, item)
+  GetCurrentFactory(navigate, item)
 
   return (
     <>{children}</>

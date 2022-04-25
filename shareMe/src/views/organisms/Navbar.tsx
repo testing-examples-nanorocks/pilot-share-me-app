@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LogoutApiCall } from '@services/_index'
+import { LogoutFactory } from '@factory/_index'
 
 type Props = {
   // children: React.ReactNode
@@ -31,7 +31,7 @@ export default function Navbar(props: Props) {
   }
 
   const logoutUser = () => {
-    LogoutApiCall(navigate)
+    LogoutFactory(navigate)
   }
 
   return (
