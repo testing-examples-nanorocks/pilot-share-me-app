@@ -1,5 +1,5 @@
 export default interface IRoute {
     routeName: string,
-    page: React.ReactElement,
+    page: any,
     isAuth: boolean
 }
