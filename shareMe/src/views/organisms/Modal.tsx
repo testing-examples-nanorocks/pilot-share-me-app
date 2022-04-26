@@ -46,7 +46,7 @@ export default function Modal({ }: Props) {
                 New Article
             </button>
             <div className={`z-10 mt-40 px-10 modal fade fixed top-10 left-0 w-full h-full overflow-x-hidden overflow-y-auto ${toggleModal ? 'show' : 'hidden'}`}
-                id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
+                id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog relative w-auto pointer-events-none">
                     <div

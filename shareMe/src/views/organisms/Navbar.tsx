@@ -130,13 +130,11 @@ export default function Navbar(props: Props) {
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
-                    tabIndex={-1}
                   >
 
                     <span
                       className="block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                       role="menuitem"
-                      tabIndex={-1}
                       id="user-menu-item-2"
                       onClick={logoutUser}
                     >

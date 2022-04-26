@@ -4,4 +4,5 @@ export type { default as INotificationItem } from './INotificationItem';
 export type { default as IProfile } from './IProfile';
 export type { default as IRoute } from './IRoute';
 export type { default as ILogin } from './ILogin';
+export type { default as IAction } from './IAction';
 

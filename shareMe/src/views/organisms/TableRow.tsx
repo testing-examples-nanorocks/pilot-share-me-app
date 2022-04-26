@@ -1,6 +1,6 @@
 import React from 'react'
 import { RefreshCcw } from 'react-feather'
-import { IArticle } from '@Interfaces/_index'
+import { IArticle } from '@interfaces/_index'
 
 type Props = {
   item: IArticle
