@@ -9,5 +9,3 @@ export { default as TableRow } from './TableRow'
 export { default as Modal } from './Modal'
 export { default as CategoryFilter } from './CategoryFilter'
 export { default as ProfileForm } from './ProfileForm'
-
-export { default as DashboardContentLoader } from './DashboardContentLoader'

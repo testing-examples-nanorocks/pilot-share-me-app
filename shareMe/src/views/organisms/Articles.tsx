@@ -8,9 +8,9 @@ type Props = {
 export default function Articles({ item }: Props) {
     return (
         <>
-            <div className="w-full md:w-1/3 xl:w-1/3 px-5">
+            <div className="w-full md:w-1/3 xl:w-1/3 px-5 shadow-lg rounded-lg">
                 <div className="bg-white rounded-lg overflow-hidden mb-10">
-                    <div className="px-8 sm:px-9 md:px-7 xl:px-9 pb-6 text-center">
+                    <div className="px-8 sm:px-9 md:px-7 xl:px-9 pb-1 text-center">
                         <div className='cursor-pointer pt-4'>
                             <Trash2 size={20} className="ml-auto mb-2" color='purple'/>
                         </div>
