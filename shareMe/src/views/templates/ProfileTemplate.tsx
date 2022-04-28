@@ -1,6 +1,6 @@
 import React from 'react'
 import { IProfile } from '@interfaces/_index'
-import { Navbar, ProfileContentLoader, ProfileForm } from '@views/organisms/_index'
+import { Navbar, ProfileForm } from '@views/organisms/_index'
 
 type Props = {
     profile: IProfile
@@ -27,7 +27,6 @@ export default function ProfileTemplate({ profile }: Props) {
                                     </div>
                                 </div>
                                 <div className="mt-5 md:mt-0 md:col-span-2 bg-white shadow sm:rounded-md sm:overflow-hidden">
-                                    <ProfileContentLoader />
                                     <ProfileForm profile={profile} />
                                 </div>
                             </div>

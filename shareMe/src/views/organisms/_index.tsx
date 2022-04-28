@@ -11,4 +11,3 @@ export { default as CategoryFilter } from './CategoryFilter'
 export { default as ProfileForm } from './ProfileForm'
 
 export { default as DashboardContentLoader } from './DashboardContentLoader'
-export { default as ProfileContentLoader } from './ProfileContentLoader'

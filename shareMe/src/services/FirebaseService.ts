@@ -1,6 +1,6 @@
-import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, sendEmailVerification } from "firebase/auth";
 import { NavigateFunction } from "react-router-dom";
-import { IRoute } from "@interfaces/_index";
+import { IProfile, IRoute } from "@interfaces/_index";
 import { app } from '@auth/firebase'
 import { setStorage, clearStorage } from '@utils/localStorage'
 
@@ -52,4 +52,31 @@ export const FirebaseGetCurrentApiCall = (navigate: NavigateFunction, item: IRou
             navigate('/')
         }
     });
+} 
+
+export const FirebaseUpdateProfileApiCall = (profile: IProfile ) => {
+    const auth: any = getAuth(app);
+
+    updateProfile(auth.currentUser, {
+        ...profile
+    }).then((res) => {
+        console.log(res);
+        
+        alert("Profile updated")
+        // setStorage('user', user)
+    }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        console.log(errorCode, errorMessage);
+    });
+} 
+
+export const FirebaseVerifyProfileApiCall = () => {
+    const auth: any = getAuth(app);
+
+   sendEmailVerification(auth.currentUser)
+  .then(() => {
+    alert("Email verification sent!")
+  });
 } 

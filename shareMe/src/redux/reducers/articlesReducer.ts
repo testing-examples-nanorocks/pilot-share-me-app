@@ -13,7 +13,6 @@ const initialState: articlesState = {
 }
 
 export default function articlesReducer(state: articlesState = initialState, action: IAction<any>) {
-    console.log(action.type);
     switch (action.type) {
         case READ_ARTICLE:
             return {

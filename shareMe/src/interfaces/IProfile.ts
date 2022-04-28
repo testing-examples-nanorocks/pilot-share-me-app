@@ -1,8 +1,9 @@
 export default interface IProfile {
     id: number,
-    name: string,
+    displayName: string,
     email: string,
-    website: string,
-    about: string,
-    photo: string
+    emailVerified: boolean,
+    photoURL: string,
+    lastLoginAt: string,
+    createdAt: string
 }

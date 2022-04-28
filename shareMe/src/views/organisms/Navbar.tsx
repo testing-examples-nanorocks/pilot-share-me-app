@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LogoutFactory } from '@factory/_index'
+import { getStorage } from "@utils/localStorage";
 
 type Props = {
   // children: React.ReactNode
@@ -9,12 +10,7 @@ type Props = {
 export default function Navbar(props: Props) {
   const location = useLocation();
 
-  const user = {
-    name: 'Tom Cook',
-    email: 'tom@example.com',
-    imageUrl:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  }
+  const user = getStorage('user')
 
   const [dropdown, setDropDown] = useState(false);
 
@@ -118,7 +114,7 @@ export default function Navbar(props: Props) {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={user.photoURL}
                         alt=""
                         onClick={toggleDropdown}
                       />
@@ -229,17 +225,17 @@ export default function Navbar(props: Props) {
               <div className="flex-shrink-0">
                 <img
                   className="h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
+                  src={user.photoURL}
+                  alt={user.displayName}
                   onClick={toggleDropdown}
                 />
               </div>
               <div className="ml-3">
                 <div className="text-base font-medium leading-none text-white">
-                  Tom Cook
+                  {user.displayName}
                 </div>
                 <div className="text-sm font-medium leading-none text-gray-400">
-                  tom@example.com
+                  {user.email}
                 </div>
               </div>
               <button
