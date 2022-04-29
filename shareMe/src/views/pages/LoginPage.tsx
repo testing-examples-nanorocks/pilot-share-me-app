@@ -1,4 +1,3 @@
-import React from 'react'
 import { LoginTemplate } from '@views/templates/_index'
 
 type Props = {}

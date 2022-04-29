@@ -27,6 +27,7 @@
       "@auth/*": ["./src/auth/*"],
       "@enums/*": ["./src/enums/*"],
       "@factory/*": ["./src/factory/*"],
+      "@hooks/*": ["./src/hooks/*"],
 
     }
   },

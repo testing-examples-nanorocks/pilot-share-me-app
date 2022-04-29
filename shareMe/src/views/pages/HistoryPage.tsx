@@ -1,13 +1,13 @@
 import React from 'react'
 
-import articles from '@mock/ArticlesMock'
 import { IArticle } from '@interfaces/_index'
 import { HistoryTemplate } from '@views/templates/_index'
+import { useAppSelector } from '@hooks/redux'
 
 type Props = {}
 
 export default function HistoryPage({ }: Props) {
-  const articlesDS: IArticle[] = articles.filter(item => item.isDeleted)
+  const articlesDS: IArticle[] = useAppSelector(state => state.articlesReducer.articles).filter((item: IArticle) => item.isDeleted)
 
   return (
     <HistoryTemplate articles={articlesDS} />

@@ -3,6 +3,7 @@ import React from 'react'
 import { routeMapper } from "@routes/.";
 import { AuthMiddleware } from "@middleware/_index";
 import { IRoute } from '@interfaces/_index'
+import Navbar from "@views/organisms/Navbar";
 
 type Props = {
     children: React.ReactNode
@@ -17,7 +18,10 @@ export default function Router(props: Props) {
                         <Route path={item.routeName} key={index} element={
                             <>
                                 <AuthMiddleware item={item}>
-                                    {item.page}
+                                    <>
+                                        {item.isAuth && <Navbar />}
+                                        {item.page}
+                                    </>            
                                 </AuthMiddleware>
                             </>
                         } />

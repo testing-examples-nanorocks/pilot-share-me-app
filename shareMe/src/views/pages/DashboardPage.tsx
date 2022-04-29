@@ -1,17 +1,16 @@
 
 import { IArticle, ICategory } from '@interfaces/_index'
-import articles from '@mock/ArticlesMock'
-import categories from '@mock/CategoriesMock'
 import { DashboardTemplate } from '@views/templates/_index'
+import { useAppSelector } from '@hooks/redux';
 
 type Props = {}
 
 export default function Dashboard({ }: Props) {
-  const articlesDS: IArticle[] = articles.filter(item => !item.isDeleted)
-  const categoriesDS: ICategory[] = categories;
+  const articlesDS: IArticle[] = useAppSelector(state => state.articlesReducer.articles).filter((item: IArticle) => !item.isDeleted)
+  const categoriesDS: ICategory[] = useAppSelector(state => state.categoriesReducer.categories);
 
   return (
-    <DashboardTemplate 
+    <DashboardTemplate
       articles={articlesDS}
       categories={categoriesDS}
     />

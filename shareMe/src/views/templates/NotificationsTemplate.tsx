@@ -1,5 +1,5 @@
 import { INotificationItem } from '@interfaces/_index'
-import { NotificationsContentLoader, Notifications, Navbar } from "@views/organisms/_index"
+import { NotificationsContentLoader, Notifications } from "@views/organisms/_index"
 
 type Props = {
     notifications: INotificationItem[]
@@ -9,7 +9,6 @@ export default function NotificationsTemplate({ notifications }: Props) {
     return (
         <>
             <div className="min-h-full">
-                <Navbar />
                 <header className="bg-white shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <h1 className="text-3xl font-bold text-gray-900">Notifications</h1>

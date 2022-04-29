@@ -1,28 +1,22 @@
 import { IArticle } from '@interfaces/_index'
-import { CREATE_ARTICLE, UPDATE_ARTICLE, READ_ARTICLE, DELETE_ARTICLE } from '@redux/types/articlesType'
+import { INIT_ARTICLES, CREATE_ARTICLE, DELETE_ARTICLE } from '@redux/types/articlesType'
 
-export function readPosts(items: IArticle[]) {
+export function initArticles(items: IArticle[]) {
     return {
-        type: READ_ARTICLE,
-        payload: [...items],
+        type: INIT_ARTICLES,
+        payload: items,
     }
 }
 
-export function addPost(item: IArticle) {
+export function addArticle(item: IArticle) {
     return {
         type: CREATE_ARTICLE,
         payload: item,
     }
 }
 
-export function updatePost(item: IArticle) {
-    return {
-        type: UPDATE_ARTICLE,
-        payload: item,
-    }
-}
 
-export function deletePost(item: IArticle) {
+export function deleteArticles(item: IArticle) {
     return {
         type: DELETE_ARTICLE,
         payload: item,

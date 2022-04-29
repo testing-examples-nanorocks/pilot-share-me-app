@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LogoutFactory } from '@factory/_index'
+import { FirebaseReadFromCollection } from '@services/_index'
 import { getStorage } from "@utils/localStorage";
+import { useAppDispatch } from "@hooks/redux";
+import { initArticles } from '@redux/actions/articlesAction'
+import { initCategories } from "@redux/actions/categoriesAction";
 
-type Props = {
-  // children: React.ReactNode
-};
+type Props = {};
 
 export default function Navbar(props: Props) {
   const location = useLocation();
@@ -29,6 +31,21 @@ export default function Navbar(props: Props) {
   const logoutUser = () => {
     LogoutFactory(navigate)
   }
+
+  const dispatch = useAppDispatch()
+
+  // Init data on login
+  useEffect(() => {
+    return () => {
+      FirebaseReadFromCollection('articles').then(articles => {
+        dispatch(initArticles(articles))
+      })
+
+      FirebaseReadFromCollection('categories').then(categories => {
+        dispatch(initCategories(categories))
+      })
+    }
+  }, [])
 
   return (
     <>

@@ -35,6 +35,7 @@ export default function Table({ articles }: Props) {
                                 })}
                             </tbody>
                         </table>
+                        {articles.length === 0 && <div className='text-2xl font-bold text-gray-900 text-center pt-4'>No articles as history</div>}
                     </div>
                 </div>
             </div>

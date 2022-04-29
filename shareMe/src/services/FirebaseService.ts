@@ -1,8 +1,9 @@
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged, updateProfile, sendEmailVerification } from "firebase/auth";
 import { NavigateFunction } from "react-router-dom";
 import { IProfile, IRoute } from "@interfaces/_index";
-import { app } from '@auth/firebase'
+import { app, db } from '@auth/firebase'
 import { setStorage, clearStorage } from '@utils/localStorage'
+import { collection, getDocs, addDoc } from "@firebase/firestore";
 
 export const FirebaseLoginApiCall = (credentials: { email: string, password: string }, navigate: NavigateFunction) => {
     const { email, password } = credentials;
@@ -52,16 +53,16 @@ export const FirebaseGetCurrentApiCall = (navigate: NavigateFunction, item: IRou
             navigate('/')
         }
     });
-} 
+}
 
-export const FirebaseUpdateProfileApiCall = (profile: IProfile ) => {
+export const FirebaseUpdateProfileApiCall = (profile: IProfile) => {
     const auth: any = getAuth(app);
 
     updateProfile(auth.currentUser, {
         ...profile
     }).then((res) => {
         console.log(res);
-        
+
         alert("Profile updated")
         // setStorage('user', user)
     }).catch((error) => {
@@ -70,13 +71,49 @@ export const FirebaseUpdateProfileApiCall = (profile: IProfile ) => {
 
         console.log(errorCode, errorMessage);
     });
-} 
+}
 
 export const FirebaseVerifyProfileApiCall = () => {
     const auth: any = getAuth(app);
 
-   sendEmailVerification(auth.currentUser)
-  .then(() => {
-    alert("Email verification sent!")
-  });
-} 
+    sendEmailVerification(auth.currentUser)
+        .then(() => {
+            alert("Email verification sent!")
+        });
+}
+
+
+// CRUD FIREBASE
+
+// Read from data from collections
+export const FirebaseReadFromCollection = async (collectionName: string) => {
+    const dataSet: any[] = []
+
+    const querySnapshot = await getDocs(collection(db, collectionName));
+
+    querySnapshot.forEach((doc) => {
+        dataSet.push({ ...doc.data(), uid: doc.id })
+    });
+
+    return dataSet;
+}
+
+
+export const FirebaseAddDoc = async (collectionName: string, dataset: any) => {
+    try {
+        const docRef = await addDoc(collection(db, collectionName), {...dataset});
+
+        console.log("Document written with ID: ", docRef.id);
+
+        return docRef;
+        
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+}
+
+
+
+
+
+// Add document to specific collection

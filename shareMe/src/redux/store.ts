@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { articlesReducer } from '@redux/reducers/_index'
+import { articlesReducer, categoriesReducer } from '@redux/reducers/_index'
 
 export const store = configureStore({
     reducer: {
-        articlesReducer
+        articlesReducer,
+        categoriesReducer
     }
 })
 

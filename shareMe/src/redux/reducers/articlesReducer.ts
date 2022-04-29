@@ -1,5 +1,5 @@
 /* eslint-disable no-duplicate-case */
-import { CREATE_ARTICLE, UPDATE_ARTICLE, READ_ARTICLE, DELETE_ARTICLE } from '@redux/types/articlesType'
+import { INIT_ARTICLES, CREATE_ARTICLE, DELETE_ARTICLE } from '@redux/types/articlesType'
 import { IAction, IArticle } from '@interfaces/_index'
 
 interface articlesState {
@@ -14,14 +14,13 @@ const initialState: articlesState = {
 
 export default function articlesReducer(state: articlesState = initialState, action: IAction<any>) {
     switch (action.type) {
-        case READ_ARTICLE:
+        case INIT_ARTICLES:
             return {
                 ...state,
                 articles: action.payload
             }
 
         case CREATE_ARTICLE:
-
             return {
                 ...state,
                 article: action.payload,
@@ -29,10 +28,6 @@ export default function articlesReducer(state: articlesState = initialState, act
                     action.payload,
                     ...state.articles
                 ]
-            }
-        case UPDATE_ARTICLE: // todo 
-            return {
-                ...state
             }
         case DELETE_ARTICLE:
             return {

@@ -1,42 +1,67 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { X } from 'react-feather'
 import CreatableSelect from 'react-select/creatable';
-import { ActionMeta, OnChangeValue } from 'react-select';
+import { OnChangeValue } from 'react-select';
+import { useAppDispatch, useAppSelector } from '@hooks/redux';
+import ICategory from '@interfaces/ICategory';
+import { IArticle, IOption } from '@interfaces/_index';
+import { FirebaseAddDoc } from '@services/_index';
+import { v4 as uuidv4 } from 'uuid';
+import { addArticle } from '@redux/actions/articlesAction';
+import { addCategory } from '@redux/actions/categoriesAction';
 
 type Props = {}
 
 export default function Modal({ }: Props) {
 
     const [toggleModal, setToggleModal] = useState(false);
+    const [options, setOptions] = useState<IOption[]>([])
+    const categoriesDS: ICategory[] = useAppSelector(state => state.categoriesReducer.categories);
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-    ]
+    const [url, setUrl] = useState<string>("")
+    const [categorySelect, setCategory] = useState<{ value: string, label: string, __isNew__?: boolean }>({ value: "", label: "" })
 
+    const dispatch = useAppDispatch()
 
-    const addArticle = (e: any) => {
+    useEffect(() => {
+        const optionsDS: IOption[] = categoriesDS.map((item: ICategory) => ({ value: item.id.toString(), label: item.name }))
+        setOptions(optionsDS)
+    }, [categoriesDS])
+
+    const addArticleToDbAndStore = (e: any) => {
         e.preventDefault();
 
-        // setToggleModal(!toggleModal)
+        const article: IArticle = {
+            url: url,
+            isDeleted: false,
+            category: {
+                id: categorySelect.value,
+                name: categorySelect.label
+            },
+            title: "TODO title",
+            description: "TODO description",
+            id: uuidv4()
+        }
+
+        FirebaseAddDoc('articles', article).then(res => {
+            dispatch(addArticle(article))
+        })
+
+        if (categorySelect.__isNew__ !== undefined) {
+            FirebaseAddDoc('categories', article.category).then(res => {
+                dispatch(addCategory(article.category))
+            })
+        }
+
+        setToggleModal(!toggleModal)
+
+        setUrl("")
+        setCategory({ value: "", label: "" })
+
+        alert('Article added!')
     }
 
-    const handleChange = (
-        newValue: OnChangeValue<any, false>,
-        actionMeta: ActionMeta<any>
-    ) => {
-        console.group('Value Changed');
-        console.log(newValue);
-        console.log(`action: ${actionMeta.action}`);
-        console.groupEnd();
-    };
-    const handleInputChange = (inputValue: any, actionMeta: any) => {
-        console.group('Input Changed');
-        console.log(inputValue);
-        console.log(`action: ${actionMeta.action}`);
-        console.groupEnd();
-    };
+    const handleChange = (newValue: OnChangeValue<any, false>) => setCategory(newValue);
 
     return (
         <div>
@@ -62,7 +87,7 @@ export default function Modal({ }: Props) {
                                 <X />
                             </button>
                         </div>
-                        <form onSubmit={addArticle}>
+                        <form onSubmit={addArticleToDbAndStore} noValidate={true}>
                             <div className="modal-body relative p-4">
                                 <div>
                                     <div>
@@ -90,6 +115,8 @@ export default function Modal({ }: Props) {
                                             id="articleUrl"
                                             placeholder="ex. youtube.com/1344sd24"
                                             required
+                                            onChange={(e: any) => setUrl(e.target.value)}
+                                            value={url}
                                         />
                                     </div>
 
@@ -100,7 +127,6 @@ export default function Modal({ }: Props) {
                                         <CreatableSelect
                                             isClearable
                                             onChange={handleChange}
-                                            onInputChange={handleInputChange}
                                             options={options}
                                             className='focus:border-purple-600'
                                             placeholder='Select or create new category'

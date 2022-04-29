@@ -1,6 +1,5 @@
-import React from 'react'
 import { IArticle } from '@interfaces/_index'
-import { Navbar, Table } from '@views/organisms/_index'
+import { Table } from '@views/organisms/_index'
 
 type Props = {
     articles: IArticle[]
@@ -10,7 +9,6 @@ export default function HistoryTemplate({ articles }: Props) {
     return (
         <>
             <div className="min-h-full">
-                <Navbar />
                 <header className="bg-white shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <h1 className="text-3xl font-bold text-gray-900">History</h1>
