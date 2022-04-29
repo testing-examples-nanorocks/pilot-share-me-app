@@ -5,7 +5,7 @@ import { OnChangeValue } from 'react-select';
 import { useAppDispatch, useAppSelector } from '@hooks/redux';
 import ICategory from '@interfaces/ICategory';
 import { IArticle, IOption } from '@interfaces/_index';
-import { FirebaseAddDoc } from '@services/_index';
+import { FirebaseAddDoc, SpiderApiCall } from '@services/_index';
 import { v4 as uuidv4 } from 'uuid';
 import { addArticle } from '@redux/actions/articlesAction';
 import { addCategory } from '@redux/actions/categoriesAction';
@@ -36,32 +36,32 @@ export default function Modal({ }: Props) {
             return
         }
 
-        // TODO add service to get url title and description
+        SpiderApiCall(url).then((res:any) => {
+            const article: IArticle = {
+                url: url,
+                isDeleted: false,
+                category: {
+                    id: categorySelect.value,
+                    name: categorySelect.label,
+                    uid: ''
+                },
+                title: res.title !== null ? res.title : url,
+                description: res.description !== null ? res.description : url,
+                id: uuidv4(),
+                uid: ''
+            }
 
-        const article: IArticle = {
-            url: url,
-            isDeleted: false,
-            category: {
-                id: categorySelect.value,
-                name: categorySelect.label,
-                uid: ""
-            },
-            title: "TODO title",
-            description: "TODO description",
-            id: uuidv4(),
-            uid: ''
-        }
+            if (categorySelect.__isNew__ !== undefined) {
+                FirebaseAddDoc('categories', article.category).then((res: string) => {
+                    dispatch(addCategory({ ...article.category, uid: res }))
+                })
+            }
 
-        if (categorySelect.__isNew__ !== undefined) {
-            FirebaseAddDoc('categories', article.category).then((res: string) => {
-                dispatch(addCategory({ ...article.category, uid: res }))
+            FirebaseAddDoc('articles', article).then((res: string) => {
+                dispatch(addArticle({ ...article, uid: res }))
             })
-        }
-
-        FirebaseAddDoc('articles', article).then((res: string) => {
-            dispatch(addArticle({ ...article, uid: res }))
         })
-
+    
         setToggleModal(!toggleModal)
 
         setUrl("")
