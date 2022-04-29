@@ -20,12 +20,13 @@ export default function DashboardTemplate({ articles, categories }: Props) {
 
                   <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
                       <div className='pt-10'>
-                          <CategoryFilter categories={categories} />
+                          <CategoryFilter categories={categories} articles={articles} />
                       </div>
 
                       <section className="pt-10 pb-10 lg:pb-20 px-8">
                           <div className="container">
                               <div className="flex flex-wrap gap-4">
+                                  {articles.length === 0 && <div className='text-2xl font-bold text-gray-900 text-center pt-4'>No articles added...</div>}
                                   {
                                       articles.map((item: IArticle) => {
                                           return (

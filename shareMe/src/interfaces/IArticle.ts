@@ -1,7 +1,7 @@
 import { ICategory } from "@interfaces/_index"
 
 export default interface IArticle {
-    uid?: string,
+    uid: string,
     id: string,
     title: string,
     description: string,

@@ -3,7 +3,7 @@ import { NavigateFunction } from "react-router-dom";
 import { IProfile, IRoute } from "@interfaces/_index";
 import { app, db } from '@auth/firebase'
 import { setStorage, clearStorage } from '@utils/localStorage'
-import { collection, getDocs, addDoc } from "@firebase/firestore";
+import { collection, getDocs, addDoc, updateDoc, doc } from "@firebase/firestore";
 
 export const FirebaseLoginApiCall = (credentials: { email: string, password: string }, navigate: NavigateFunction) => {
     const { email, password } = credentials;
@@ -92,6 +92,7 @@ export const FirebaseReadFromCollection = async (collectionName: string) => {
     const querySnapshot = await getDocs(collection(db, collectionName));
 
     querySnapshot.forEach((doc) => {
+       
         dataSet.push({ ...doc.data(), uid: doc.id })
     });
 
@@ -105,13 +106,23 @@ export const FirebaseAddDoc = async (collectionName: string, dataset: any) => {
 
         console.log("Document written with ID: ", docRef.id);
 
-        return docRef;
-        
+        return docRef.id;
+
     } catch (e) {
         console.error("Error adding document: ", e);
+        return ""
     }
 }
 
+export const FirebaseUpdateDoc = async (collectionName: string, dataset: any, uid:string) => {
+    try {
+        await updateDoc(doc(db, collectionName, uid), dataset);
+        return true
+    } catch (e) {
+        console.error("Error updating document: ", e);
+        return false;
+    }
+}
 
 
 

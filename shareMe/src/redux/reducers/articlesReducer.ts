@@ -1,5 +1,5 @@
 /* eslint-disable no-duplicate-case */
-import { INIT_ARTICLES, CREATE_ARTICLE, DELETE_ARTICLE } from '@redux/types/articlesType'
+import { INIT_ARTICLES, CREATE_ARTICLE, DELETE_ARTICLE, ROLLBACK_ARTICLE } from '@redux/types/articlesType'
 import { IAction, IArticle } from '@interfaces/_index'
 
 interface articlesState {
@@ -33,7 +33,13 @@ export default function articlesReducer(state: articlesState = initialState, act
             return {
                 ...state,
                 article: action.payload,
-                // articles: state.articles.filter(item => item.id !== action.payload.id)
+                articles: [...state.articles.filter(item => item.uid !== action.payload.uid), action.payload]
+            }
+        case ROLLBACK_ARTICLE:
+            return {
+                ...state,
+                article: action.payload,
+                articles: [action.payload, ...state.articles.filter(item => item.uid !== action.payload.uid)]
             }
         default:
             return state

@@ -1,18 +1,32 @@
 import { MousePointer, Trash2 } from 'react-feather'
 import { IArticle } from '@interfaces/_index'
+import { FirebaseUpdateDoc } from '@services/_index';
+import { useAppDispatch } from '@hooks/redux';
+import { deleteArticles } from '@redux/actions/articlesAction';
 
 type Props = {
     item: IArticle
 }
 
 export default function Articles({ item }: Props) {
+
+    const dispatch = useAppDispatch()
+
+    const softDeleteArticle = (item: IArticle) => {
+        FirebaseUpdateDoc('articles', {isDeleted: true}, item.uid ).then(res => {
+            if(res) {
+                dispatch(deleteArticles({...item, isDeleted: true}))
+            }
+        })
+    }
+
     return (
         <>
             <div className="w-full md:w-1/3 xl:w-1/3 px-5 shadow mb-4">
                 <div className="bg-white rounded-lg overflow-hidden mb-5 mt-5">
                     <div className="px-8 sm:px-9 md:px-7 xl:px-9 pb-1">
                         <div className='text-right'>
-                            <Trash2 size={19} className='cursor-pointer inline' color='purple' />
+                            <Trash2 size={19} className='cursor-pointer inline' color='purple' onClick={() => softDeleteArticle(item)} />
                         </div>
                         <h3 className='flex'>
                             <div

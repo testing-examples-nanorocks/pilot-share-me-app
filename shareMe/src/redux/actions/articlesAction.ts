@@ -1,5 +1,5 @@
 import { IArticle } from '@interfaces/_index'
-import { INIT_ARTICLES, CREATE_ARTICLE, DELETE_ARTICLE } from '@redux/types/articlesType'
+import { INIT_ARTICLES, CREATE_ARTICLE, DELETE_ARTICLE, ROLLBACK_ARTICLE } from '@redux/types/articlesType'
 
 export function initArticles(items: IArticle[]) {
     return {
@@ -19,6 +19,13 @@ export function addArticle(item: IArticle) {
 export function deleteArticles(item: IArticle) {
     return {
         type: DELETE_ARTICLE,
+        payload: item,
+    }
+}
+
+export function rollbackArticle(item: IArticle) {
+    return {
+        type: ROLLBACK_ARTICLE,
         payload: item,
     }
 }

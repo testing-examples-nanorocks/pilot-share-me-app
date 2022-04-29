@@ -24,41 +24,48 @@ export default function Modal({ }: Props) {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        const optionsDS: IOption[] = categoriesDS.map((item: ICategory) => ({ value: item.id.toString(), label: item.name }))
+        const optionsDS: IOption[] = categoriesDS.map((item: ICategory) => ({ value: item.uid.toString(), label: item.name[0].toUpperCase() + item.name.substring(1) }))
         setOptions(optionsDS)
     }, [categoriesDS])
 
     const addArticleToDbAndStore = (e: any) => {
         e.preventDefault();
 
+        if (categorySelect.value === '') {
+            alert("Add or select category")
+            return
+        }
+
+        // TODO add service to get url title and description
+
         const article: IArticle = {
             url: url,
             isDeleted: false,
             category: {
                 id: categorySelect.value,
-                name: categorySelect.label
+                name: categorySelect.label,
+                uid: ""
             },
             title: "TODO title",
             description: "TODO description",
-            id: uuidv4()
+            id: uuidv4(),
+            uid: ''
         }
-
-        FirebaseAddDoc('articles', article).then(res => {
-            dispatch(addArticle(article))
-        })
 
         if (categorySelect.__isNew__ !== undefined) {
-            FirebaseAddDoc('categories', article.category).then(res => {
-                dispatch(addCategory(article.category))
+            FirebaseAddDoc('categories', article.category).then((res: string) => {
+                dispatch(addCategory({ ...article.category, uid: res }))
             })
         }
+
+        FirebaseAddDoc('articles', article).then((res: string) => {
+            dispatch(addArticle({ ...article, uid: res }))
+        })
 
         setToggleModal(!toggleModal)
 
         setUrl("")
         setCategory({ value: "", label: "" })
-
-        alert('Article added!')
     }
 
     const handleChange = (newValue: OnChangeValue<any, false>) => setCategory(newValue);
@@ -87,7 +94,7 @@ export default function Modal({ }: Props) {
                                 <X />
                             </button>
                         </div>
-                        <form onSubmit={addArticleToDbAndStore} noValidate={true}>
+                        <form onSubmit={addArticleToDbAndStore} noValidate={false}>
                             <div className="modal-body relative p-4">
                                 <div>
                                     <div>
