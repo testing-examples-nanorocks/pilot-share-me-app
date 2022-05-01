@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && shx cp dist/index.html dist/404.html",
     "preview": "vite preview --port 8080"
   },
   "dependencies": {
@@ -35,6 +35,7 @@
     "gh-pages": "^3.2.3",
     "jest": "^27.5.1",
     "postcss": "^8.4.12",
+    "shx": "^0.3.4",
     "tailwindcss": "^3.0.24",
     "typescript": "^4.6.3",
     "vite": "^2.9.2",
